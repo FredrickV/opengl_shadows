@@ -11,7 +11,6 @@
 1. Apply bias in the shadow map pass. 
 2. Cull back face only (shadow cast front face)
 3. Experiment with glPolygonOffset(xx,xx); glEnable(GL_POLYGON_OFFSET_FILL); when rendering depth pass. (I am currently not using it)
-scsd 
 
 
 # Sloped Based Bias (Depth Map Pass)
