@@ -2,7 +2,9 @@
 
 **Important notes**
 
-1. Shadow code is in camera space; not in world space.
+1. The code samples and the "tips" are currently written based on my current knowledge, and in addition best suited for my rendering engine. Other practices may be better suited for your needs.
+2. Shadow code is in camera space; not in world space.
+ 
 
 **General Tips**
 
