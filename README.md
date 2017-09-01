@@ -11,7 +11,7 @@
 1. Apply bias in the shadow map pass. 
 2. Cull back face only (shadow cast front face)
 3. Experiment with glPolygonOffset(xx,xx); glEnable(GL_POLYGON_OFFSET_FILL); when rendering depth pass. (I am currently not using it)
-
+4. Experiment with dFdxCoarse(fast) vs dFdxFine(slower) for performance gains. I have not seen any quality loss with the fast method (Req. OpenGL 4.5+)
 
 # Sloped Based Bias (Depth Map Pass)
 
