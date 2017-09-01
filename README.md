@@ -42,3 +42,26 @@ Fragment Shader, Directional light
 ```
 float depth = Position.z * 0.5 + 0.5;
 ```
+
+
+#  Getting the Partial derivative, increases accuracy of bias
+
+```
+gl_FragDepth = (depth + abs( dFdx(depth) ) + abs(dFdy(depth) ) ) +  bias;
+```
+
+
+# Putting it all together (Directional light)
+
+```
+#define DIR_BIAS 0.00002
+float p = dot(normalize(NormalOut), normalize(
+          // Normal Matrix
+          mat3(V *M) 
+          // Light inverse direction
+          * normalize(-LightDirection)));
+float bias = max(DIR_BIAS  * sqrt(1.0 - p * p) / p, DIR_BIAS); 
+
+float depth = Position.z * 0.5 + 0.5;
+gl_FragDepth = (depth + abs( dFdx(depth) ) + abs(dFdy(depth) ) ) +  bias;
+ ```
