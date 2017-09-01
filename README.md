@@ -1,4 +1,4 @@
-# opengl_shadows
+# opengl_shadows - Work in progress!
 
 **Important notes**
 
@@ -14,8 +14,9 @@
 
 
 
-# Sloped Based Bias
+# Sloped Based Bias (Depth Map Pass)
 
+Fragment Shader:
 NormalOut came from the vertex shader (Surface normal)
 
 ```
@@ -26,4 +27,19 @@ float p = dot(normalize(NormalOut), normalize(
           * normalize(-LightDirection)));
 // Clamp to bias          
 float bias = max(BIAS  * sqrt(1.0 - p * p) / p, BIAS); 
+```
+
+# Normalized Device Coordinates (NDC): Directional lights versurs local light sources such as spot and point lights (Depth Map Pass)
+
+Fragment Shader, spot and point shadows:
+```
+// Perspective divide (Position.w)
+float depth = Position.z/Position.w * 0.5 + 0.5;
+```
+
+Fragment Shader, Directional light
+
+```
+// Perspective divide (Position.w)
+float depth = Position.z * 0.5 + 0.5;
 ```
