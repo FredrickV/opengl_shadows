@@ -12,5 +12,6 @@ float p = dot(normalize(NormalOut), normalize(
           // Normal Matrix (can be pre-computed)
           mat3(V *M) 
           * normalize(-LightDirection)));
+// Clamp to bias          
 float bias = max(BIAS  * sqrt(1.0 - p * p) / p, BIAS); 
 ```
