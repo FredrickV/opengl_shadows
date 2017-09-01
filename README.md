@@ -40,6 +40,5 @@ float depth = Position.z/Position.w * 0.5 + 0.5;
 Fragment Shader, Directional light
 
 ```
-// Perspective divide (Position.w)
 float depth = Position.z * 0.5 + 0.5;
 ```
