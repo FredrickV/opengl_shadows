@@ -11,7 +11,7 @@
 1. Apply bias in the shadow map pass. 
 2. Cull back face only (shadow cast front face)
 3. Experiment with glPolygonOffset(xx,xx); glEnable(GL_POLYGON_OFFSET_FILL); when rendering depth pass. (I am currently not using it)
-
+scsd 
 
 
 # Sloped Based Bias (Depth Map Pass)
@@ -29,7 +29,7 @@ float p = dot(normalize(NormalOut), normalize(
 float bias = max(BIAS  * sqrt(1.0 - p * p) / p, BIAS); 
 ```
 
-# Normalized Device Coordinates (NDC): Directional lights versurs local light sources such as spot and point lights (Depth Map Pass)
+# Normalized Device Coordinates (NDC): Directional lights versus local light sources such as spot and point lights (Depth Map Pass)
 
 Fragment Shader, spot and point shadows:
 ```
