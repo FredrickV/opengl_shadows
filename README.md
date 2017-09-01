@@ -56,10 +56,11 @@ gl_FragDepth = (depth + abs( dFdx(depth) ) + abs(dFdy(depth) ) ) +  bias;
 ```
 #define DIR_BIAS 0.00002
 float p = dot(normalize(NormalOut), normalize(
-          // Normal Matrix
+          // Normal Matrix (can be pre-computed)
           mat3(V *M) 
           // Light inverse direction
           * normalize(-LightDirection)));
+// Clamp to bias  
 float bias = max(DIR_BIAS  * sqrt(1.0 - p * p) / p, DIR_BIAS); 
 
 float depth = Position.z * 0.5 + 0.5;
