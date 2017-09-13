@@ -69,6 +69,7 @@ gl_FragDepth = (depth + abs( dFdx(depth) ) + abs(dFdy(depth) ) ) +  bias;
  
  # Solving shimmering shadows
  
+ Function returns a new ortho, replace it with your source/original orthographical projection
  ```
  glm::mat4 ShadowOrthoRound(const int shadowSize, const glm::mat4 &shadowOrtho, const glm::mat4 &shadowView) {
     glm::mat4 shadowMatrix = (shadowOrtho * shadowView);
