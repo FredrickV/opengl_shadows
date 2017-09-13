@@ -65,3 +65,24 @@ float bias = max(DIR_BIAS  * sqrt(1.0 - p * p) / p, DIR_BIAS);
 float depth = Position.z * 0.5 + 0.5;
 gl_FragDepth = (depth + abs( dFdx(depth) ) + abs(dFdy(depth) ) ) +  bias;
  ```
+ 
+ 
+ # Solving shimmering shadows
+ 
+ ```
+ glm::mat4 ShadowOrthoRound(const int shadowSize, const glm::mat4 &shadowOrtho, const glm::mat4 &shadowView) {
+    glm::mat4 shadowMatrix = (shadowOrtho * shadowView);
+    glm::vec4 shadowOrigin = shadowMatrix * glm::vec4(0.0f, 0.0f, 0.0f, 1.0f);
+    shadowOrigin = shadowOrigin * (float)shadowSize / 2.0f;
+
+    glm::vec4 roundedOrigin = glm::round(shadowOrigin);
+    glm::vec4 roundOffset = roundedOrigin - shadowOrigin;
+    roundOffset = roundOf fset *  2.0f / (float)shadowSize;
+    roundOffset.z = 0.0f;
+    roundOffset.w = 0.0f;
+
+    glm::mat4 roundedShadowOrtho = shadowOrtho;
+    roundedShadowOrtho[3] += roundOffset;
+    return roundedShadowOrtho;
+}
+```
